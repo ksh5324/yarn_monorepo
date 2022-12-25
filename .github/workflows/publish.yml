@@ -1,6 +1,4 @@
-name: Main Workflow
-​
-# .changeset, packages 디렉토리의 변경사항들이 main 브렌치에 push될때 이벤트를 실행한다. 
+​# .changeset, packages 디렉토리의 변경사항들이 main 브렌치에 push될때 이벤트를 실행한다. 
 on:
   push:
     paths:
@@ -8,7 +6,9 @@ on:
       - "packages/**"
     branches:
       - main
-​
+      
+name: Main Workflow​
+
 jobs:
   release:
     name: Release
