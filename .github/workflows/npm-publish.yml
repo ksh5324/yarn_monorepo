@@ -1,47 +1,44 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-name: Node.js Package
+name: Release
 
 on:
   push:
-    paths:
-      - ".changeset/**"
-      - "packages/**"
     branches:
       - main
-​
+
 jobs:
-  build:
+  release:
+    name: Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout Repo
+        uses: actions/checkout@v3
         with:
-          node-version: 16
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile --ignore-engines
+      - name: Setup Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Use cached node_modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: nodeModules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            nodeModules-
+      - name: Install Dependencies
+        run: yarn install --immutable
+
+      - name: Create Release Pull Request or Publish to npm
+        uses: cometkim/yarn-changeset-action@v1
+        with:
+          autoPublish: true
         env:
-          CI: true
-
-      - name: Configure npm
-          run: |
-            cat << EOF > "$HOME/.npmrc"
-              //registry.npmjs.org/:_authToken=$NPM_TOKEN
-            EOF
-          env:
-            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  ​
-        # 패키지를 빌드한다.
-        - name: Build packages
-            run: yarn build
-  ​
-        - name: Create release Pull Request or publish to NPM
-            id: changesets
-            uses: changesets/action@v1
-            with:
-              publish: changeset publish
-              commit: "ci(changesets): version packages"
-            env:
-              NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
