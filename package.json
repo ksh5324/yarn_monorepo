@@ -1,0 +1,23 @@
+{
+  "name": "yarnberry",
+  "packageManager": "yarn@3.3.1",
+  "author": {
+    "name": "ksh5324"
+  },
+  "repository": {
+    "url": "https://github.com/ksh5324/yarn_monorepo.git"
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.26.0",
+    "react": "^18.2.0",
+    "styled-components": "^5.3.6"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/react-native"
+    ]
+  }
+}
