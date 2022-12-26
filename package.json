@@ -25,6 +25,5 @@
       "**/react-native"
     ]
   },
-  "license": "MIT",
-  "private": "true"
+  "license": "MIT"
 }
