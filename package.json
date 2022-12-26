@@ -2,7 +2,7 @@
   "name": "@ksh5324-design/project",
   "packageManager": "yarn@3.3.1",
   "scripts": {
-    "release": ""
+    "build": "yarn workspaces foreach yarn prepack"
   },
   "author": {
     "name": "ksh5324"
