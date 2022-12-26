@@ -2,7 +2,7 @@
   "name": "@ksh5324-design/project",
   "packageManager": "yarn@3.3.1",
   "scripts": {
-    "build": "yarn workspaces run yarn prepack"
+    "build": "yarn workspaces run prepack"
   },
   "author": {
     "name": "ksh5324"
