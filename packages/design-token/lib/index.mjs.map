@@ -1,7 +1,7 @@
 {
   "version": 3,
-  "sources": ["../src/add.ts", "../src/sub.ts"],
-  "sourcesContent": ["const a = 3;\nexport const add = () => console.log(a + a);\n", "export const sub = () => console.log(3 - 3);\n"],
-  "mappings": "AACO,IAAMA,EAAM,IAAM,QAAQ,IAAI,CAAK,ECDnC,IAAMC,EAAM,IAAM,QAAQ,IAAI,CAAK",
-  "names": ["add", "sub"]
+  "sources": ["../src/add.ts", "../src/sub.ts", "../src/console.ts"],
+  "sourcesContent": ["const a = 3;\nexport const add = () => console.log(a + a);\n", "export const sub = () => console.log(3 - 3);\n", "export const consoles = (a: string) => {\n  console.log(a);\n};\n"],
+  "mappings": "AACO,IAAMA,EAAM,IAAM,QAAQ,IAAI,CAAK,ECDnC,IAAMC,EAAM,IAAM,QAAQ,IAAI,CAAK,ECAnC,IAAMC,EAAYC,GAAc,CACrC,QAAQ,IAAIA,CAAC,CACf",
+  "names": ["add", "sub", "consoles", "a"]
 }

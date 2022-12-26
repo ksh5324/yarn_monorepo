@@ -3,7 +3,8 @@
   "packageManager": "yarn@3.3.1",
   "scripts": {
     "build": "yarn workspaces run prepack",
-    "release": "yarn run build && yarn changeset publish"
+    "release": "yarn run build && yarn changeset publish",
+    "versioning": "yarn changeset version"
   },
   "author": {
     "name": "ksh5324"
@@ -24,6 +25,5 @@
       "**/react-native"
     ]
   },
-  "license": "MIT",
-  "private": "true"
+  "license": "MIT"
 }
