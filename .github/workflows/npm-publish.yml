@@ -2,60 +2,30 @@
 # For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
 
 name: Node.js Package
-​
-on:
-  push:
-    paths:
-      - ".changeset/**"
-      - "packages/**"
-    branches:
-      - main
-​
+
+on: push
+
 jobs:
-  release:
-    name: Release
+  build:
     runs-on: ubuntu-latest
     steps:
-      # 레포지토리에 체크아웃하여 소스를 가져온다.
-      - name: Checkout branch
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-​
-      # Node.js를 설치한다.
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
-​
-      # 빌드 및 테스트를 위해서 의존성을 설치한다.
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile --ignore-engines
-        env:
-          CI: true
-​
-      # 배포를 위해 .npmrc 파일을 생성하고 인증 토큰을 추가한다.
-      - name: Configure npm
-        run: |
-          cat << EOF > "$HOME/.npmrc"
-            //registry.npmjs.org/:_authToken=$NPM_TOKEN
-          EOF
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-​
-      # 패키지를 빌드한다.
-      - name: Build packages
-        run: yarn build
-​
-      # Changesets에서 제공하는 Action을 사용할 수 있다.
-      # NPM에 배포, Git 태그 생성 등의 작업을 수행한다.
-      - name: Create release Pull Request or publish to NPM
-        id: changesets
-        uses: changesets/action@v1
+      - run: npm ci
+      - run: npm test
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          publish: changeset publish
-          commit: "ci(changesets): version packages"
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+      - run: npm ci
+      - run: npm publish
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-​
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
