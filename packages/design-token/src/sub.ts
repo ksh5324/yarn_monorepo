@@ -1,1 +1,1 @@
-export const sub = () => console.log(3 - 3);
+export const sub = () => console.log(4 - 3);
