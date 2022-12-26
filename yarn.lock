@@ -485,6 +485,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ksh5324-design/project@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@ksh5324-design/project@workspace:."
+  dependencies:
+    "@changesets/cli": ^2.26.0
+    react: ^18.2.0
+    styled-components: ^5.3.6
+  languageName: unknown
+  linkType: soft
+
 "@manypkg/find-root@npm:^1.1.0":
   version: 1.1.0
   resolution: "@manypkg/find-root@npm:1.1.0"
@@ -3148,16 +3158,6 @@ __metadata:
   checksum: 47da1b0d854fa16d45a3ded57b716b013b2179022352a5f7467409da5a04a1eef5b3b3d97a2dfc13e8bbe5f2ffc0afe3bc6a4a72f8254e60f5a4bd7947138643
   languageName: node
   linkType: hard
-
-"yarnberry@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "yarnberry@workspace:."
-  dependencies:
-    "@changesets/cli": ^2.26.0
-    react: ^18.2.0
-    styled-components: ^5.3.6
-  languageName: unknown
-  linkType: soft
 
 "yocto-queue@npm:^0.1.0":
   version: 0.1.0
