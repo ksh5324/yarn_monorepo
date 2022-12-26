@@ -22,5 +22,6 @@
     "nohoist": [
       "**/react-native"
     ]
-  }
+  },
+  "license": "MIT"
 }
