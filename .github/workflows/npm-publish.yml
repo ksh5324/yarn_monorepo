@@ -21,7 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
        - name: Create release Pull Request or publish to NPM
-        id: changesets
         uses: changesets/action@v1
         with:
           publish: changeset publish
