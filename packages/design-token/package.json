@@ -1,6 +1,6 @@
 {
   "name": "@ksh5324-design/design-token",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./src/index.ts",
   "license": "MIT",
   "repository": {
@@ -31,5 +31,8 @@
   },
   "devDependencies": {
     "nanobundle": "^0.0.27"
+  },
+  "dependencies": {
+    "typescript": "^4.9.4"
   }
 }
