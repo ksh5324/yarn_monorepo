@@ -13,10 +13,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile --ignore-engines
-        env:
-          CI: true
 
   publish-npm:
     needs: build
@@ -36,6 +32,11 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 ​
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --ignore-engines
+        env:
+          CI: true
+          
       # 패키지를 빌드한다.
       - name: Build packages
         run: yarn build
