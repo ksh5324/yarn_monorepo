@@ -1,1 +1,1 @@
-var s=()=>console.log(6);var e=()=>console.log(0);var n=o=>{console.log(o)};export{s as add,n as consoles,e as sub};
+var s=()=>console.log(6);var t=()=>console.log(0);var r=o=>{console.log(o),console.log(o)};export{s as add,r as consoles,t as sub};
