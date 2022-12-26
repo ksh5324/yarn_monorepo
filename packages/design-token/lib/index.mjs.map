@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/add.ts"],
+  "sourcesContent": ["const a = 3;\nexport const add = () => console.log(a + a);\n"],
+  "mappings": "AACO,IAAMA,EAAM,IAAM,QAAQ,IAAI,CAAK",
+  "names": ["add"]
+}

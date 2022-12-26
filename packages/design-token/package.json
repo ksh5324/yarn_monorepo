@@ -1,0 +1,35 @@
+{
+  "name": "@ksh5324-design/design-token",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksh5324/yarn_monorepo.git",
+    "directory": "packages/design-token"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "source": "./src/index.ts",
+  "types": "./build/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./lib/index.cjs",
+      "import": "./lib/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "lib",
+    "build"
+  ],
+  "scripts": {
+    "prepack": "rm -rf lib && yarn build",
+    "build": "nanobundle build"
+  },
+  "devDependencies": {
+    "nanobundle": "^0.0.27"
+  }
+}
